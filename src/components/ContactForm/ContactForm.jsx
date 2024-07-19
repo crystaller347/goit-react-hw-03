@@ -9,7 +9,7 @@ export default function ContactForm({ onAdd }) {
     const numberId = useId()
 
     const initialValues = {
-        username: "",
+        name: "",
         number: "",
     }
 
@@ -22,20 +22,24 @@ export default function ContactForm({ onAdd }) {
     }
 
     const validationScheme = Yup.object().shape({
-        username: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required"),
+        name: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required"),
         number: Yup.string().min(3, "Too short!").max(50, "Too long!").required("Required"),
     })
 
     return (
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationScheme}>
-            <Form>
-                <label htmlFor={nameId}>Name</label>
-                <Field type="text" name="username" id={nameId}></Field>
-                <ErrorMessage name='username' component="span"></ErrorMessage>
-                <label htmlFor={numberId}>Number</label>
-                <Field type="text" name="number" id={numberId}></Field>
-                <ErrorMessage name="number" component="span"></ErrorMessage>
-                <button type='submit'>Add contact</button>
+            <Form className={css.container}>
+                <div className={css.textContainer}>
+                    <label htmlFor={nameId}>Name</label>
+                    <Field type="text" name="name" id={nameId}></Field>
+                    <ErrorMessage name='name' component="span"></ErrorMessage>
+                </div>
+                <div className={css.textContainer}>
+                    <label htmlFor={numberId}>Number</label>
+                    <Field type="text" name="number" id={numberId}></Field>
+                    <ErrorMessage name="number" component="span"></ErrorMessage>
+                </div>
+                <button className={css.button} type='submit'>Add contact</button>
             </Form>
         </Formik>
     )
