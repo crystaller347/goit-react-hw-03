@@ -13,13 +13,12 @@ export default function ContactForm({ onAdd }) {
         number: "",
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (values, actions) => {
         onAdd({
+            ...values,
             id: nanoid(),
-            username: e.target.elements.username.value,
-            number: e.target.elements.number.value,
         })
-        e.target.reset
+        actions.resetForm()
     }
 
     const validationScheme = Yup.object().shape({
