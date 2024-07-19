@@ -1,0 +1,23 @@
+.container {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 8px 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.button {
+  height: 27px;
+  border-radius: 2px;
+  border: 1px solid gray;
+  margin-top: auto;
+  margin-bottom: auto;
+}
