@@ -9,7 +9,7 @@ export default function App() {
   const [contacts, setContacts] = useState(() => {
     const savedContacts = window.localStorage.getItem("saved-contacts")
     if (savedContacts !== null) {
-      return savedContacts
+      return JSON.parse(savedContacts)
     }
     return contactsData
   })
@@ -17,7 +17,7 @@ export default function App() {
   const [filter, setFilter] = useState("")
 
   useEffect(() => {
-    window.localStorage.setItem("saved-contacts", (contacts))
+    window.localStorage.setItem("saved-contacts", JSON.stringify(contacts))
   }, [contacts])
 
   const addContacts = (newContact) => {
